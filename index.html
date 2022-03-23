@@ -3319,10 +3319,6 @@
             $('.point_bay_amount').html(currencyFormat(amount));
         };
 
-        $.get('https://taejai.com/form/csrf/', function (data) {
-            $('#donation_form').find('input[name="csrfmiddlewaretoken"]').val(data);
-        });
-
         $(document).ready(function () {
 
             var queryAmount = getParameterByName('amount');
