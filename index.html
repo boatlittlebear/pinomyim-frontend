@@ -3069,7 +3069,9 @@
                                     <script>
                                         // protext spam
                                         setTimeout(function () {
-                                            $('#donation_form').attr('action', '/th/f/242/')
+                                            console.log('do sumbit');
+                                            // $('#donation_form').attr('action', '/th/f/242/')
+                                            $('#donation_form').attr('action', '')
                                         }, 1000)
                                     </script>
                                 </div>
@@ -3185,7 +3187,6 @@
 
             var is_recurring = is_checked || $('.cart-detail-info-body-recurring').length > 0;
 
-
             if (is_recurring) {
                 $('#id_real_recurring').val('1m');
                 $('.field-email div.help-block').addClass('hidden');
@@ -3200,10 +3201,6 @@
                 $('.option-transfer-wrapper .payment-disabled-note-recurring').removeClass('hidden');
 
                 if (active_payment == 'qr_scb' || active_payment == 'qr_bay' || active_payment == 'transfer') {
-                    //$('.form-payment .options input:checked').val('creditcard');
-                    //$('[name=payment_option]').val('creditcard');
-                    //paymentOptionTrigger();
-
                     var back_to = (global_previous_payment == 'creditcard' || global_previous_payment == 'linepay') ? global_previous_payment : 'creditcard';
 
                     $('.form-payment .options input[value=' + back_to + ']').trigger('click');
@@ -3427,6 +3424,8 @@
 
             $("#donation_form").submit(function () {
 
+
+                console.log('submit');
                 if ($('#id_same_address').prop('checked')) {
                     $('[name=address]').val('');
                 }
@@ -3495,112 +3494,6 @@
                     $('#id_invoice_addressee').val('');
                     $('#id_invoice_address').val('');
                     $('#id_address').val('');
-                }
-
-                if (active_payment === 'creditcard') {
-                    var cardName = form.find("[id=id_card_name]").val();
-                    var cardNumber = form.find("[id=id_card_number]").val().replace(/ /g, '');
-                    var expireMonth = parseInt(form.find("[id=id_card_expire_month]").val()) || '';
-                    var expireYear = parseInt(form.find("[id=id_card_expire_year]").val()) || '';
-                    var cardCCV = form.find("[id=id_card_security]").val();
-
-                    var today = new Date();
-                    var currentYear = today.getFullYear();
-                    var currentYear2Digit = currentYear % 100;
-                    var offsetYear = 30;
-
-                    if (!cardName || !cardNumber || cardNumber.length !== 16 || !expireMonth || expireMonth < 1 ||
-                        expireMonth > 12 || !expireYear ||
-                        expireYear < currentYear2Digit ||
-                        (expireYear > currentYear2Digit + offsetYear && expireYear < currentYear) ||
-                        expireYear > currentYear + offsetYear ||
-                        !cardCCV) {
-                        new PNotify({
-                            title: 'เกิดข้อผิดพลาด',
-                            text: 'กรุณากรอกข้อมูลข้างต้นให้ครบถ้วน',
-                            type: 'error'
-                        });
-
-                        // TODO: More validate
-                        var errorRequiredMsg = '<p class="card-error text-danger">กรุณากรอกข้อมูลให้ถูกต้องและครบถ้วน</p>';
-                        if (!cardName) {
-                            $('#id_card_name').after(errorRequiredMsg);
-                        }
-                        if (!cardNumber) {
-                            $('#id_card_number').after(errorRequiredMsg);
-                        } else if (cardNumber.length !== 16) {
-                            $('#id_card_number').after('<p class="card-error text-danger">หมายเลขบัตรไม่ถูกต้อง</p>');
-                        }
-                        if (!expireMonth || !expireYear || expireMonth < 1 || expireMonth > 12 ||
-                            expireYear < currentYear2Digit ||
-                            (expireYear > currentYear2Digit + offsetYear && expireYear < currentYear) ||
-                            expireYear > currentYear + offsetYear) {
-
-                            $('#id_card_expire_year').after(errorRequiredMsg);
-                        }
-                        if (!cardCCV) {
-                            $('#id_card_security').after(errorRequiredMsg);
-                        }
-
-                        return false;
-                    }
-
-                    // Disable the submit button to avoid repeated click.
-                    form.find("button[type=submit]").prop("disabled", true);
-
-                    // Serialize the form fields into a valid card object.
-                    var card = {
-                        "name": cardName,
-                        "number": cardNumber,
-                        "expiration_month": expireMonth,
-                        "expiration_year": expireYear,
-                        "security_code": cardCCV
-                    };
-
-                    // Send a request to create a token then trigger the callback function once
-                    // a response is received from Omise.
-                    //
-                    // Note that the response could be an error and this needs to be handled within
-                    // the callback.
-                    Omise.createToken("card", card, function (statusCode, response) {
-                        if (response.object == "error") {
-                            // Display an error message.
-                            new PNotify({
-                                title: 'เกิดข้อผิดพลาด',
-                                text: response.message,
-                                type: 'error'
-                            });
-                            $(".non-field-errors").html('<div class="alert alert-danger">' + response.message + '</div>');
-
-                            // Re-enable the submit button.
-                            form.find("button[type=submit]").prop("disabled", false);
-                        } else {
-                            // Then fill the omise_token.
-                            form.find("[name=omise_token]").val(response.id);
-                            form.find("[name=omise_card_id]").val(response.card.id);
-
-                            // Remove card number from form before submiting to server.
-                            form.find("[data-omise=number]").val("");
-                            form.find("[data-omise=security_code]").val("");
-
-                            // submit token to server.
-                            form.get(0).submit();
-                        }
-                    });
-
-                    // Prevent the form from being submitted;
-                    return false;
-                } else if (active_payment === 'internet_banking') {
-                    var bankName = form.find('input[name="bank_name"]:checked').val();
-                    if (!bankName) {
-                        new PNotify({
-                            title: 'เกิดข้อผิดพลาด',
-                            text: 'กรุณากรอกข้อมูลข้างต้นให้ครบถ้วน',
-                            type: 'error'
-                        });
-
-                        return false;
-                    }
                 }
 
             });
