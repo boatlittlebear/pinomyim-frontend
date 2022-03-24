@@ -3314,6 +3314,7 @@
 
                 var form = $(this);
                 var realAmount = form.find("[id=id_real_amount]").val();
+                var isComplete = true;
 
                 var minAmount = 20;
                 if (realAmount < minAmount && !isStaff) {
@@ -3324,7 +3325,7 @@
                     });
 
                     $('.amount-select').after('<p class="card-error alert alert-danger">จำนวนเงินต้องไม่น้อยกว่า ' + minAmount + ' บาท</p>');
-                    return false;
+                    isComplete = false;
                 }
 
                 var active_payment = $('.form-payment .options input:checked').val();
@@ -3335,7 +3336,7 @@
                         type: 'error'
                     });
                     $('#form-payment').after('<p class="card-error alert alert-danger">กรุณาเลือกช่องทางการชำระเงิน</p>');
-                    return false;
+                    isComplete = false;
                 }
 
                 // Invoice
@@ -3351,22 +3352,26 @@
                             type: 'error'
                         });
                         return false;
+                        isComplete = false;
                     }
                 }
 
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:3000/payments",
-                    data: formData,
-                    success: function (msg) {
-                        alert("ขอบคุณที่ร่วมบริจาค");
-                        $(document).scrollTop(0);
-                        window.location.reload();
-                    },
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                });
+                if (isComplete) {
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:3000/payments",
+                        data: formData,
+                        success: function (msg) {
+                            alert("ขอบคุณที่ร่วมบริจาค");
+                            $(document).scrollTop(0);
+                            window.location.reload();
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                }
+
             });
         });
     </script>
