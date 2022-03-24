@@ -2962,14 +2962,6 @@
                                                     </div>
                                                     <div class="row invoice-form hide">
                                                         <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label class="control-label"
-                                                                    for="id_invoice_addressee">ชื่อ-นามสกุล</label>
-                                                                <input type="text" name="invoice_addressee"
-                                                                    id="id_invoice_addressee" class="form-control"
-                                                                    maxlength="100" />
-                                                            </div>
-
                                                             <div class="form-group ">
                                                                 <label for="id_invoice_address" class="">ที่อยู่</label>
                                                                 <a href="#id_invoice_location_address,#id_invoice_location_location,#id_invoice_address,#id_invoice_location_province,#id_invoice_location_postcode"
@@ -3141,6 +3133,8 @@
         $('#id_name').attr('required', true);
         $('#id_email').attr('required', true);
         $('#id_phone_number').attr('required', true);
+        $('#id_comment').attr('required', true);
+        $('#id_image').attr('required', true);
 
         var minimum_donation_of_request_tax_deduction = 250;
         var isStaff = false;
@@ -3326,11 +3320,6 @@
                 var formData = new FormData(this);
                 event.preventDefault();
 
-                var name = $('#id_name').val();
-                var email = $('#id_email').val();
-                var phone_number = $('#id_phone_number').val();
-                var comment = $('#id_comment').val();
-
                 var form = $(this);
                 var realAmount = form.find("[id=id_real_amount]").val();
 
@@ -3357,7 +3346,7 @@
                     return false;
                 }
 
-                // // Invoice
+                // Invoice
                 var isRequestInvoice = $('#id_invoice_checkbox').is(':checked');
                 var invoiceAddress;
                 if (isRequestInvoice) {
