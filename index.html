@@ -3308,6 +3308,8 @@
             invoice_checkbox.on('change', function () { invoiceChangeTrigger(true); });
 
             $("#donation_form").submit(function (event) {
+                $('#create_token').attr('disabled','disabled');
+
                 $(this).find('.card-error').remove();
                 var formData = new FormData(this);
                 event.preventDefault();
@@ -3351,7 +3353,6 @@
                             text: 'กรุณากรอกข้อมูลใบเสร็จให้ครบถ้วน',
                             type: 'error'
                         });
-                        return false;
                         isComplete = false;
                     }
                 }
@@ -3370,6 +3371,9 @@
                         contentType: false,
                         processData: false
                     });
+                }
+                else {
+                    $('#create_token').removeAttr('disabled');
                 }
 
             });
