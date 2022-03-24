@@ -12,8 +12,7 @@
     <link rel="shortcut icon" href="static/images/pin-icon.png">
     <meta name="theme-color" content="#ffffff">
 
-    <meta property="og:url"
-        content="https://arithmeticop.github.io/pinomyim-frontend/static/images/pin-icon.png" />
+    <meta property="og:url" content="https://arithmeticop.github.io/pinomyim-frontend/static/images/pin-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="PINOMYIM BIRTHDAY 2022" />
 
@@ -334,8 +333,7 @@
         </div>
         <div class="header-content">
             <div class="container">
-                <a class="pinomyim-logo" href="/pinomyim-frontend/index.html"><img class="logo-image"
-                        src="static/images/pin-icon.png" /></a>
+                <a class="pinomyim-logo" href="/pinomyim-frontend/index.html"></a>
             </div>
         </div>
 
@@ -368,29 +366,15 @@
                                         <div class="fundraiser-media-wrapper">
                                             <div class="fundraiser-item fundraiser-image">
                                                 <div class="profile-image-wrapper">
-                                                    <div class="profile-image profile-image-upload"
-                                                        style="background-image: url('static/images/pin-icon.png');"
-                                                        data-background-image="static/images/pin-icon.png">
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="fundraiser-body-wrapper">
-                                            <div class="fundraiser-item fundraiser-name name">
-                                                <!-- input appear here -->
-                                                PINOMYIM BIRTHDAY 2022
-                                            </div>
+                                            <div class="fundraiser-item fundraiser-name name" id="profileTitle"></div>
                                             <br />
-                                            <div class="fundraiser-item fundraiser-teaser teaser">
-                                                <!-- input appear here -->
-                                                เนื่องในโอกาสวันเกิดน้องปิ่นอมยิ้ม PINOMYIM ที่จะถึงในวันที่ 4 เมษายนนี้
-                                                เราจะมาชวนเพื่อนๆ ร่วมกันบริจาคเงินในโครงการ “อยู่เพื่อยิ้ม”
-                                                มูลนิธิโรงพยาบาลเด็ก และจะมีการสุ่มแจก giveaway
-                                                สำหรับผู้ที่บริจาคตั้งแต่ 100 บาทขึ้นไป โดยให้เพื่อนๆ
-                                                นำหลักฐานการบริจาคคอมเม้นใต้โพสที่ปักหมุดใน FB fanpage Pinomyim
-                                                ❤️ขอบคุณที่ร่วมบริจาคนะคะ❤️
-                                            </div>
+                                            <div class="fundraiser-item fundraiser-teaser teaser"
+                                                id="profileDescription"></div>
 
                                             <div>
                                                 <div class="section-fundraiser-stat  ">
@@ -2748,7 +2732,7 @@
 
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 col-sm-12">
-                                    <form action="https://example.com" method="post" id="donation_form">
+                                    <form action="http://localhost:3000/payments" method="post" id="donation_form">
 
                                         <input type="hidden" name="currency" value="THB" />
 
@@ -2763,9 +2747,9 @@
 
                                                             <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                                                                 <label class="btn active">
-                                                                    <input type="radio" name="amount" id="id_amount_500"
-                                                                        value="500" autocomplete="off"
-                                                                        checked="checked"> 500 <span
+                                                                    <input type="radio" name="amount" id="id_amount_1"
+                                                                        value="100" autocomplete="off"
+                                                                        checked="checked"> 100 <span
                                                                         class="unit">บาท</span><span
                                                                         class="hidden">บาท</span>
 
@@ -2775,9 +2759,8 @@
 
                                                             <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                                                                 <label class="btn">
-                                                                    <input type="radio" name="amount"
-                                                                        id="id_amount_1500" value="1500"
-                                                                        autocomplete="off"> 1,500 <span
+                                                                    <input type="radio" name="amount" id="id_amount_2"
+                                                                        value="300" autocomplete="off"> 300 <span
                                                                         class="unit">บาท</span><span
                                                                         class="hidden">บาท</span>
 
@@ -2787,9 +2770,8 @@
 
                                                             <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                                                                 <label class="btn">
-                                                                    <input type="radio" name="amount"
-                                                                        id="id_amount_3000" value="3000"
-                                                                        autocomplete="off"> 3,000 <span
+                                                                    <input type="radio" name="amount" id="id_amount_3"
+                                                                        value="1000" autocomplete="off"> 1,000 <span
                                                                         class="unit">บาท</span><span
                                                                         class="hidden">บาท</span>
 
@@ -2808,25 +2790,11 @@
                                                                     </span>
                                                                 </label>
                                                                 <input id="id_real_amount" name="real_amount"
-                                                                    type="hidden" value="500">
+                                                                    type="hidden" value="100">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </fieldset>
-                                            </div>
-
-                                            <div class="form-button text-center js-donate-form-action">
-                                                <span class="donate-now-wrapper">
-                                                    <a class="btn-donate" href="#donation-info-form" id="donate-now">
-                                                        <i class="fa fa-heart"></i> ร่วมบริจาค
-                                                    </a>
-                                                </span>
-
-                                                <a class="btn-donate js-add-to-cart-btn hide"
-                                                    href="/th/carts/add-item/?project_id=938&fundraiser_id=242&amount=500">
-                                                    <span class="iccart-ic-cart"></span>&nbsp;
-                                                    หยิบใส่ตะกร้า
-                                                </a>
                                             </div>
 
                                             <style>
@@ -2843,7 +2811,7 @@
                                                 <fieldset class="form-payment" data-payment="creditcard">
                                                     <legend>ช่องทางการชำระเงิน</legend>
                                                     <div class="options">
-                                                        <div class="row">
+                                                        <div class="row" id="form-payment">
                                                             <div class="col-md-5ths col-sm-5ths col-xs-6">
                                                                 <div class="option-wrapper option-qr_scb-wrapper">
                                                                     <label class="radio option-qr_scb">
@@ -2920,12 +2888,12 @@
                                                                 <div class="bank-account">
                                                                     <h4 class="account-bank">ธนาคารกรุงไทย
                                                                         สาขาสุทธิสาร-รัชดา</h4>
-                                                                    <div class="account-name">ชื่อบัญชี: 
+                                                                    <div class="account-name">ชื่อบัญชี:
                                                                         ปิ่นอมยิ้ม แฟนคลับ
                                                                         (PINOMYIM FANCLUB)</div>
                                                                     <div class="account-number"><span
                                                                             class="sr-only">เลขบัญชี</span>
-                                                                            083-989-8896</div>
+                                                                        083-989-8896</div>
                                                                 </div>
                                                             </div>
 
@@ -2967,6 +2935,20 @@
                                                                         maxlength="100" />
                                                                     <div class="help-block"></div>
                                                                 </div>
+                                                                <label class="control-label"
+                                                                    for="id_comment">คำอวยพร</label>
+                                                                <div class="field-comment">
+                                                                    <textarea type="text" name="comment" id="id_comment"
+                                                                        class="form-control" placeholder=""
+                                                                        autocomplete="off"></textarea>
+                                                                </div>
+                                                                <label class="control-label"
+                                                                    for="id_image">อัพโหลดหลักฐาน *</label>
+                                                                <div class="field-iamge">
+                                                                    <input type="file" name="image" id="id_image"
+                                                                        class="form-control" />
+                                                                    <div class="help-block"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -2976,8 +2958,7 @@
                                                     <div class="checkbox">
                                                         <input id="id_invoice_checkbox" type="checkbox"
                                                             name="invoice_checkbox">
-                                                        <label
-                                                            for="id_invoice_checkbox">ต้องการของชำร่วย</label>
+                                                        <label for="id_invoice_checkbox">ต้องการของชำร่วย</label>
                                                     </div>
                                                     <div class="row invoice-form hide">
                                                         <div class="col-md-6">
@@ -2990,8 +2971,7 @@
                                                             </div>
 
                                                             <div class="form-group ">
-                                                                <label for="id_invoice_address"
-                                                                    class="">ที่อยู่</label>
+                                                                <label for="id_invoice_address" class="">ที่อยู่</label>
                                                                 <a href="#id_invoice_location_address,#id_invoice_location_location,#id_invoice_address,#id_invoice_location_province,#id_invoice_location_postcode"
                                                                     class="clear-input"> · ลบ</a>
                                                                 <div class="">
@@ -3012,13 +2992,11 @@
                                                                                 <small>จังหวัด*</small>
                                                                             </div>
 
-
                                                                             <input value="" type="hidden"
                                                                                 class="form-control location_province"
                                                                                 id="id_invoice_location_postcode"
                                                                                 name="invoice_location_province"
                                                                                 class="province" />
-
 
                                                                             <select
                                                                                 class="form-control location_province_dummy"
@@ -3069,9 +3047,14 @@
                                     <script>
                                         // protext spam
                                         setTimeout(function () {
-                                            console.log('do sumbit');
-                                            // $('#donation_form').attr('action', '/th/f/242/')
-                                            $('#donation_form').attr('action', '')
+                                            $(document).ready(function () {
+                                                $.get("http://localhost:3000/profiles", function (resp) {
+                                                    $('#profileTitle').text(resp.title);
+                                                    $('#profileDescription').text(resp.description);
+                                                    $('.profile-image-wrapper').prepend(`<div class="profile-image profile-image-upload" style="background-image: url('${resp.images}');" data-background-image="${resp.images}"> </div>`);
+                                                    $('.pinomyim-logo').prepend(`<img class="logo-image" src="${resp.images}" />`);
+                                                });
+                                            });
                                         }, 1000)
                                     </script>
                                 </div>
@@ -3133,24 +3116,11 @@
 
 
     <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
-    <script type="text/javascript" src="https://developers.line.biz/en/docs/line-social-plugins/?v=20140411"></script>
 
     <script type="text/javascript" src="static/scripts/e8bdf111b096.js"></script>
 
     <script>
         $(document).ready(function () {
-
-            // Nav
-            $('.nav-hamburger').click(function () {
-                $('.nav-group').addClass('js-show');
-                $('body').addClass('_noScroll');
-            });
-
-            $('.nav-bg').click(function () {
-                $('.nav-group').removeClass('js-show');
-                $('body').removeClass('_noScroll');
-            });
-
             // Mobile hover Share button on homepage
             $('.tooltip-wrapper').bind('touchstart', function (e) {
                 e.preventDefault();
@@ -3168,6 +3138,7 @@
     <script src="static/scripts/animation.person.stand.js"></script>
 
     <script>
+        $('#id_name').attr('required', true);
         $('#id_email').attr('required', true);
         $('#id_phone_number').attr('required', true);
 
@@ -3179,54 +3150,6 @@
         function currencyFormat(num) {
             return parseInt(num).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
-
-        var recurringChangeTrigger = function () {
-            var is_checked = $('#id_recurring').prop('checked');
-            var active_payment = $('.form-payment .options input:checked').val();
-
-
-            var is_recurring = is_checked || $('.cart-detail-info-body-recurring').length > 0;
-
-            if (is_recurring) {
-                $('#id_real_recurring').val('1m');
-                $('.field-email div.help-block').addClass('hidden');
-
-                $('.option-qr_scb-wrapper .payment-disabled-mask').removeClass('hidden');
-                $('.option-qr_scb-wrapper .payment-disabled-note-recurring').removeClass('hidden');
-
-                $('.option-qr_bay-wrapper .payment-disabled-mask').removeClass('hidden');
-                $('.option-qr_bay-wrapper .payment-disabled-note-recurring').removeClass('hidden');
-
-                $('.option-transfer-wrapper .payment-disabled-mask').removeClass('hidden');
-                $('.option-transfer-wrapper .payment-disabled-note-recurring').removeClass('hidden');
-
-                if (active_payment == 'qr_scb' || active_payment == 'qr_bay' || active_payment == 'transfer') {
-                    var back_to = (global_previous_payment == 'creditcard' || global_previous_payment == 'linepay') ? global_previous_payment : 'creditcard';
-
-                    $('.form-payment .options input[value=' + back_to + ']').trigger('click');
-                }
-
-            } else {
-                $('#id_real_recurring').val('');
-                $('.field-email div.help-block').removeClass('hidden');
-
-
-                $('.option-qr_scb-wrapper .payment-disabled-mask').not('.permanent').addClass('hidden');
-                $('.option-qr_scb-wrapper .payment-disabled-note-recurring').addClass('hidden');
-
-                $('.option-transfer-wrapper .payment-disabled-mask').not('.permanent').addClass('hidden');
-                $('.option-transfer-wrapper .payment-disabled-note-recurring').addClass('hidden');
-
-                if ((active_payment == 'creditcard' || active_payment == 'linepay') && (global_previous_payment != 'creditcard' && global_previous_payment != 'linepay')) {
-                    //$('[name=payment_option]').val('qr_scb');
-                    //paymentOptionTrigger();
-                    $('.form-payment .options input[value=' + global_previous_payment + ']').trigger('click')
-                }
-
-            }
-            global_previous_payment = active_payment;
-
-        };
 
         var paymentOptionTrigger = function () {
             var form_payment = $('.form-payment');
@@ -3268,7 +3191,6 @@
             } else {
                 //$('.form-recurring').removeClass('invisible');
                 $('.cart-detail-info-body-recurring-header').removeClass('hidden');
-                //recurringChangeTrigger();
             }
             return false;
         }
@@ -3302,18 +3224,24 @@
 
         var realAmountChangeTrigger = function () {
             var amount = $('#id_real_amount').val();
-            if (amount >= minimum_donation_of_request_tax_deduction) {
-                $('#id_invoice_checkbox').prop('disabled', false);
-            } else {
-
-
-                invoiceChangeTrigger();
-                //$('#id_invoice_addressee').val('');
-                //$('#id_invoice_address').val('');
+            $(document).find('.card-info').remove();
+            var detail = "";
+            if (amount === $('#id_amount_1').val()) {
+                detail = "รายละเอียด id_amount_1"
             }
-
-            $('.point_bay_points').html(currencyFormat(amount * 10));
-            $('.point_bay_amount').html(currencyFormat(amount));
+            else if (amount === $('#id_amount_2').val()) {
+                detail = "รายละเอียด id_amount_2"
+            }
+            else if (amount === $('#id_amount_3').val()) {
+                detail = "รายละเอียด id_amount_3"
+            }
+            else if (amount > $('#id_amount_custom').val()) {
+                detail = "รายละเอียด id_amount_custom"
+            }
+            if (Number(amount) > 0 && detail) {
+                $('.form-amount').after(`<p class="card-info alert alert-info">${detail}</p>`);
+            }
+            invoiceChangeTrigger();
         };
 
         $(document).ready(function () {
@@ -3368,26 +3296,6 @@
                 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
             })
 
-            // Login link
-            $('.form-login a').click(function (e) {
-                var $this = $(this);
-                var amountVal = $('#id_real_amount').val();
-                if (amountVal) {
-                    var href = $this.attr('href');
-                    if (href.search(/amount=\d+/i) >= 0) {
-                        href = href.replace(/amount=\d+/i, 'amount=' + amountVal);
-
-                    } else {
-                        href += '?amount=' + amountVal;
-                    }
-
-                    $this.attr('href', href);
-                }
-            });
-
-            $('#id_recurring').change(recurringChangeTrigger);
-            recurringChangeTrigger();
-
             $('#id_email').on('blur', function () {
                 $(this).mailcheck({
                     suggested: function (element, suggestion) {
@@ -3408,41 +3316,25 @@
             $('.form-payment .options input').on('change', paymentOptionTrigger);
             paymentOptionTrigger();
 
-            $('#id_card_expire_month').payment('restrictNumeric');
-            $('#id_card_expire_year').payment('restrictNumeric');
-
-            $('#id_card_number').payment('formatCardNumber');
-            $('#id_card_security').payment('formatCardCVC');
-
             var invoice_checkbox = $('#id_invoice_checkbox');
             invoice_checkbox.prop('checked', false);
 
             invoice_checkbox.on('change', function () { invoiceChangeTrigger(true); });
 
-            var omisePublicKey = 'pkey_53q6mm66esjr563ob0h';
-            Omise.setPublicKey(omisePublicKey);
+            $("#donation_form").submit(function (event) {
+                $(this).find('.card-error').remove();
+                var formData = new FormData(this);
+                event.preventDefault();
 
-            $("#donation_form").submit(function () {
-
-
-                console.log('submit');
-                if ($('#id_same_address').prop('checked')) {
-                    $('[name=address]').val('');
-                }
+                var name = $('#id_name').val();
+                var email = $('#id_email').val();
+                var phone_number = $('#id_phone_number').val();
+                var comment = $('#id_comment').val();
 
                 var form = $(this);
-                var active_payment = $('.form-payment .options input:checked').val();
-
-                console.log('active_payment', active_payment)
-
-                // Clear errors
-                $(this).find('.card-error').remove();
-
                 var realAmount = form.find("[id=id_real_amount]").val();
+
                 var minAmount = 20;
-                if (active_payment == 'point_bay') {
-                    minAmount = 100;
-                }
                 if (realAmount < minAmount && !isStaff) {
                     new PNotify({
                         title: 'เกิดข้อผิดพลาด',
@@ -3454,112 +3346,49 @@
                     return false;
                 }
 
-
-                // Invoice
-                var isRequestInvoice = $('#id_invoice_checkbox').is(':checked');
-
-                if (isRequestInvoice) {
-                    var invoiceAddressee = $('#id_invoice_addressee').val();
-                    var invoiceAddress = $('#id_invoice_address').val();
-                    var invoiceTaxId = $('#id_tax_id').val();
-
-                    var id_invoice_location_address = $('#id_invoice_location_address').val();
-                    var id_invoice_location_province_dummy = $('#id_invoice_location_province_dummy').val();
-                    var id_invoice_location_postcode = $('#id_invoice_location_postcode').val();
-
-                    if (!id_invoice_location_address || !id_invoice_location_province_dummy || !id_invoice_location_postcode) {
-                        new PNotify({
-                            title: 'เกิดข้อผิดพลาด',
-                            text: 'กรุณากรอกข้อมูลใบเสร็จให้ครบถ้วน',
-                            type: 'error'
-                        });
-
-                        return false;
-                    }
-
-                    if (!invoiceAddressee || !invoiceAddress) {
-
-                        new PNotify({
-                            title: 'เกิดข้อผิดพลาด',
-                            text: 'กรุณากรอกข้อมูลใบเสร็จให้ครบถ้วน',
-                            type: 'error'
-                        });
-
-                        return false;
-                    }
-
-                }
-
-                if (!isRequestInvoice || (realAmount < minimum_donation_of_request_tax_deduction && !enable_auto_receipt)) {
-                    $('#id_invoice_addressee').val('');
-                    $('#id_invoice_address').val('');
-                    $('#id_address').val('');
-                }
-
-            });
-
-            var promotion_check = function (e) {
-                e.preventDefault();
-                var code = $("input[name='promotion_code']").val();
-                $('#promotion-check-wrapper').removeClass('has-success').removeClass('has-error').find('.glyphicon').hide();
-                $('#promotion-check-wrapper .errorlist').remove();
-
-                if (code) {
-                    $.get("/api/promotion/check/", { 'code': code }, function (resp) {
-                        console.log(resp);
-                        if (resp.valid) {
-                            $('#promotion-check-wrapper').addClass('has-success').find('.glyphicon-ok').show();
-                        } else {
-                            $('#promotion-check-wrapper').addClass('has-error').find('.glyphicon-remove').show();
-                        }
+                var active_payment = $('.form-payment .options input:checked').val();
+                if (!active_payment) {
+                    new PNotify({
+                        title: 'เกิดข้อผิดพลาด',
+                        text: 'กรุณากรอกข้อมูลข้างต้นให้ครบถ้วน',
+                        type: 'error'
                     });
+                    $('#form-payment').after('<p class="card-error alert alert-danger">กรุณาเลือกช่องทางการชำระเงิน</p>');
+                    return false;
                 }
 
-            };
+                // // Invoice
+                var isRequestInvoice = $('#id_invoice_checkbox').is(':checked');
+                var invoiceAddress;
+                if (isRequestInvoice) {
+                    invoiceAddress = $('#id_invoice_address').val();
 
-
-            var promotion_check_timeout;
-            $("input[name='promotion_code']").blur(promotion_check).keyup(function (e) {
-                $('#promotion-check-wrapper').removeClass('has-success').removeClass('has-error').find('.glyphicon').hide();
-                $('#promotion-check-wrapper').find('.glyphicon-refresh').show();
-                if (promotion_check_timeout) {
-                    clearTimeout(promotion_check_timeout);
+                    if (!invoiceAddress) {
+                        new PNotify({
+                            title: 'เกิดข้อผิดพลาด',
+                            text: 'กรุณากรอกข้อมูลใบเสร็จให้ครบถ้วน',
+                            type: 'error'
+                        });
+                        return false;
+                    }
                 }
-                promotion_check_timeout = setTimeout(function () {
-                    promotion_check(e)
-                }, 2000);
 
-            });
-
-            $('#donate-now').click(function (e) {
-                e.preventDefault();
-                $('#donation-info-form').slideDown(500, function () {
-
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:3000/payments",
+                    data: formData,
+                    success: function (msg) {
+                        alert("ขอบคุณที่ร่วมบริจาค");
+                        $(document).scrollTop(0);
+                        window.location.reload();
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
                 });
-                $('html, body').animate({
-                    scrollTop: $("#donation-info-form").offset().top - $('.header-content').height()
-                }, 500);
-                if (typeof (updateDonationBox) != 'undefined' && updateDonationBox) {
-                    setTimeout(function () {
-                        updateDonationBox(true);
-                    }, 1000);
-                }
             });
-
-
-            $('#id_same_address').change(function (e) {
-                if ($(this).prop('checked')) {
-                    $('.address_send_reward_wrapper').slideUp()
-                } else {
-                    $('.address_send_reward_wrapper').slideDown()
-                }
-            });
-
-
         });
     </script>
-
-
 
     <script>
 
@@ -3761,8 +3590,6 @@
         })
 
         $(document).ready(function () {
-
-            $('#donate-now').hide();
             $('#donation-info-form').css('display', 'block');
         });
 
