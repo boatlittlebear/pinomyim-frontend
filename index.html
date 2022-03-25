@@ -396,11 +396,8 @@
                                                 <div class="fundraiser-project-content">
                                                     <div class="item">
                                                         <div class="project-card">
-                                                            <div class="media">
-                                                                <img class="image img-responsive"
-                                                                    src="static/images/pin-icon.png" width="370"
-                                                                    height="220" alt="" />
-                                                            </div>
+                                                            <div id="carousel-example-generic"
+                                                                class="carousel slide media" data-ride="carousel"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -458,7 +455,7 @@
 
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 col-sm-12">
-                                    <form action="http://localhost:3000/payments" method="post" id="donation_form">
+                                    <form action="https://pinomyim-backend.herokuapp.com/payments" method="post" id="donation_form">
 
                                         <input type="hidden" name="currency" value="THB" />
 
@@ -751,7 +748,7 @@
                                         // protext spam
                                         setTimeout(function () {
                                             $(document).ready(function () {
-                                                $.get("http://localhost:3000/profiles", function (resp) {
+                                                $.get("https://pinomyim-backend.herokuapp.com/profiles", function (resp) {
                                                     $('#profileTitle').text(resp.title);
                                                     $('#profileDescription').text(resp.description);
                                                     $('.profile-image-wrapper').prepend(`<div class="profile-image profile-image-upload" style="background-image: url('${resp.images}');" data-background-image="${resp.images}"> </div>`);
@@ -776,7 +773,7 @@
                                                         </div>
                                                     `);
                                                 });
-                                                $.get("http://localhost:3000/comments", function (resp) {
+                                                $.get("https://pinomyim-backend.herokuapp.com/comments", function (resp) {
                                                     var comments = ``;
                                                     var avatarId = [103347, 103325, 103298, 103288, 103282, 103277, 103257, 103251, 103243, 103241, 103238, 103234, 103228, 103227, 103224, 103223, 103222, 103218, 103217, 103213, 103207, 103202, 103201, 103200, 103199, 103198, 103197, 103196, 103194, 103162, 102719, 103150, 102857, 103066, 103048, 103041, 103033, 103029, 103018, 103016, 103015, 103014, 103012, 103010, 103009, 103008, 103006, 103005, 103002, 103000, 102999, 102993, 47786, 102967, 102715, 102937, 102921, 102917, 102912, 102907, 102906, 102905, 102894, 102869, 102860, 102859, 102858, 102857, 102831, 102829, 102827, 102826, 102825, 102823, 102822, 102819, 66848, 102818, 102816, 102815, 102814, 102813, 102812, 102810, 102806, 102805, 102804, 102802, 102797, 102796, 102775, 102792, 102788, 102787, 102782, 102781, 102779, 102774, 102773];
                                                     for (var i = 0; i < resp.length; i++) {
@@ -799,6 +796,37 @@
                                                         `;
                                                     }
                                                     $('.donorList-wrapper').prepend(comments);
+                                                });
+                                                $.get("https://pinomyim-backend.herokuapp.com/posters", function (resp) {
+                                                    var carouselInner = `<div class="media carousel-inner" role="listbox">`;
+                                                    var carouseControl =
+                                                        `
+                                                            <a class="left carousel-control"
+                                                                href="#carousel-example-generic" role="button"
+                                                                data-slide="prev">
+                                                                <span class="glyphicon glyphicon-chevron-left"
+                                                                    aria-hidden="true"></span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="right carousel-control"
+                                                                href="#carousel-example-generic" role="button"
+                                                                data-slide="next">
+                                                                <span class="glyphicon glyphicon-chevron-right"
+                                                                    aria-hidden="true"></span>
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        `;
+                                                    for (var i = 0; i < resp.length; i++) {
+                                                        carouselInner +=
+                                                            `
+                                                                <div class="item ${i === 0 ? 'active' : ''}">
+                                                                    <img class="image img-responsive" src="${resp[i].images}" width="370" height="220" alt="">
+                                                                </div>
+                                                            `;
+                                                    }
+                                                    carouselInner += `</div>`;
+                                                    carouseGeneric = carouselInner + carouseControl;
+                                                    $('#carousel-example-generic').prepend(carouseGeneric);
                                                 });
                                             });
                                         }, 1000)
@@ -1113,7 +1141,7 @@
                 if (isComplete) {
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost:3000/payments",
+                        url: "https://pinomyim-backend.herokuapp.com/payments",
                         data: formData,
                         success: function (msg) {
                             alert("ขอบคุณที่ร่วมบริจาค");
