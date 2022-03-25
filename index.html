@@ -378,25 +378,8 @@
                                             <div>
                                                 <div class="section-fundraiser-stat  ">
                                                     <div class="fundraiser-item kanit-light fundraiser-stat">
-                                                        <div class="fundraiser-stat--amount _mr-10 _lh1">
-                                                            <div class="icon"></div>
-                                                            <div class="detail">
-                                                                <span
-                                                                    class="_fs-13 _fs-md-14">ยอดระดมทุนที่ได้รับตอนนี้</span><br />
-                                                                <span
-                                                                    class="_fs-25 _fw-500 kanit-med text-orange _lh1">24,037</span>
-                                                                บาท
-                                                            </div>
-                                                        </div>
-                                                        <div class="fundraiser-stat--donor _lh1">
-                                                            <div class="icon"></div>
-                                                            <div class="detail">
-                                                                <span class="_fs-13 _fs-md-14">ผู้บริจาค </span><br />
-                                                                <span
-                                                                    class="_fs-25 _fw-500 kanit-med text-orange _lh1">131</span>
-                                                                คน
-                                                            </div>
-                                                        </div>
+                                                        <div class="fundraiser-stat--amount _mr-10 _lh1"></div>
+                                                        <div class="fundraiser-stat--donor _lh1"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -414,11 +397,9 @@
                                                     <div class="item">
                                                         <div class="project-card">
                                                             <div class="media">
-                                                                <a class="link">
-                                                                    <img class="image img-responsive"
-                                                                        src="static/images/pin-icon.png" width="370"
-                                                                        height="220" alt="" />
-                                                                </a>
+                                                                <img class="image img-responsive"
+                                                                    src="static/images/pin-icon.png" width="370"
+                                                                    height="220" alt="" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -775,6 +756,25 @@
                                                     $('#profileDescription').text(resp.description);
                                                     $('.profile-image-wrapper').prepend(`<div class="profile-image profile-image-upload" style="background-image: url('${resp.images}');" data-background-image="${resp.images}"> </div>`);
                                                     $('.pinomyim-logo').prepend(`<img class="logo-image" src="${resp.images}" />`);
+                                                    $('.fundraiser-stat--amount').prepend(`
+                                                        <div class="icon"></div>
+                                                        <div class="detail">
+                                                            <span
+                                                                class="_fs-13 _fs-md-14">ยอดระดมทุนที่ได้รับตอนนี้</span><br />
+                                                            <span
+                                                                class="_fs-25 _fw-500 kanit-med text-orange _lh1">${resp.amount.toLocaleString()}</span>
+                                                            บาท
+                                                        </div>
+                                                    `);
+                                                    $('.fundraiser-stat--donor').prepend(`
+                                                        <div class="icon"></div>
+                                                        <div class="detail">
+                                                            <span class="_fs-13 _fs-md-14">ผู้บริจาค </span><br />
+                                                            <span
+                                                                class="_fs-25 _fw-500 kanit-med text-orange _lh1">${resp.donor.toLocaleString()}</span>
+                                                            คน
+                                                        </div>
+                                                    `);
                                                 });
                                                 $.get("http://localhost:3000/comments", function (resp) {
                                                     var comments = ``;
@@ -1318,19 +1318,13 @@
         };
         doAnimation(false);
 
+        setTimeout(function () {
+            doAnimation(true);
+        }, 1500);
+
         setInterval(function () {
             doAnimation(true);
         }, 5000);
-
-
-        setTimeout(function () {
-            $('#inviteDonateModal').modal();
-        }, 1000);
-
-        $('.btn-donate-modal').click(function () {
-            $('#inviteDonateModal').modal('hide');
-            return true;
-        })
 
         $(document).ready(function () {
             $('#donation-info-form').css('display', 'block');
