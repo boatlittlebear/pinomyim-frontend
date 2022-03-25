@@ -2853,8 +2853,11 @@
                                                                 banking application ของ ธนาคารไทยพานิชย์ ธนาคารทหารไทย
                                                                 ธนาคารกรุงไทย ธนาคารกรุงเทพ ธนาคารกรุงศรี ธนาคารธนชาต
                                                                 ธนาคารกสิกร ธนาคารออมสิน</p>
-                                                            <p class="head"><strong>คุณจะได้ QR code
-                                                                    หลังจากยืนยันการบริจาค</strong></p>
+                                                            <div class="bank-logo"><img
+                                                                    src="https://firebasestorage.googleapis.com/v0/b/pinomyim-birthday.appspot.com/o/1647790760101.275109603_135485352314616_6264563793984709000_n.jpg?alt=media&token=2b2e6b6e-d33e-49c5-810d-d1043f0b3a0f"
+                                                                    srcset="https://firebasestorage.googleapis.com/v0/b/pinomyim-birthday.appspot.com/o/1647790760101.275109603_135485352314616_6264563793984709000_n.jpg?alt=media&token=2b2e6b6e-d33e-49c5-810d-d1043f0b3a0f"
+                                                                    alt="" width="250" height="250"
+                                                                    class="image img-responsive"></div>
                                                         </div>
 
                                                         <div class="payment-form form-transfer" style="display: none">
@@ -2873,32 +2876,14 @@
                                                                         ปิ่นอมยิ้ม แฟนคลับ
                                                                         (PINOMYIM FANCLUB)</div>
                                                                     <div class="account-number"><span
-                                                                            class="sr-only">เลขบัญชี</span> 083-989-8896
+                                                                            class="sr-only">เลขบัญชี</span> 012-345-6789
                                                                     </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="bank-info clearfix">
-                                                                <div class="bank-logo"><img
-                                                                        src="https://taejai.com/static/storehouse/payments/bookbank-krungthai.png"
-                                                                        srcset="https://taejai.com/static/storehouse/payments/bookbank-krungthai%402x.png"
-                                                                        alt="" width="141" height="84"
-                                                                        class="image img-responsive"></div>
-                                                                <div class="bank-account">
-                                                                    <h4 class="account-bank">ธนาคารกรุงไทย
-                                                                        สาขาสุทธิสาร-รัชดา</h4>
-                                                                    <div class="account-name">ชื่อบัญชี:
-                                                                        ปิ่นอมยิ้ม แฟนคลับ
-                                                                        (PINOMYIM FANCLUB)</div>
-                                                                    <div class="account-number"><span
-                                                                            class="sr-only">เลขบัญชี</span>
-                                                                        083-989-8896</div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="bank-notice">
                                                                 <div class="notice"><i class="fa fa-info-circle"></i>
-                                                                    อย่าลืมกรอกฟอร์มยืนยันโอนเงินที่เว็บไซต์
+                                                                    อย่าลืมอัพโหลดไฟล์ยืนยันโอนเงิน
                                                                     หลังจากโอนเงินผ่านธนาคารแล้ว
                                                                 </div>
                                                                 <p>เตรียมหลักฐานการโอนเงินเป็นรูปภาพหรือรูปถ่าย เช่น
@@ -3157,8 +3142,6 @@
             button_note.find('span').hide();
             button_note.find('span.' + active_payment).show();
 
-            console.log('active_payment', active_payment)
-
             form_payment.find('.forms .form-' + previous_payment + ' input').removeAttr('required');
             if (active_payment != 'qr_scb') {
                 form_payment.find('.forms .form-' + active_payment + ' input').attr('required', true);
@@ -3308,7 +3291,7 @@
             invoice_checkbox.on('change', function () { invoiceChangeTrigger(true); });
 
             $("#donation_form").submit(function (event) {
-                $('#create_token').attr('disabled','disabled');
+                $('#create_token').attr('disabled', 'disabled');
 
                 $(this).find('.card-error').remove();
                 var formData = new FormData(this);
