@@ -455,7 +455,8 @@
 
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 col-sm-12">
-                                    <form action="https://pinomyim-backend.herokuapp.com/payments" method="post" id="donation_form">
+                                    <form action="https://pinomyim-backend.herokuapp.com/payments" method="post"
+                                        id="donation_form">
 
                                         <input type="hidden" name="currency" value="THB" />
 
@@ -571,7 +572,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="forms at-creditcard">
+                                                    <div class="forms">
                                                         <div class="payment-form form-qr_scb" style="display: none">
                                                             <p class="head">ชำระผ่านการ สแกน/อัพโหลด QR code ด้วย mobile
                                                                 banking application ของ ธนาคารไทยพานิชย์ ธนาคารทหารไทย
@@ -934,7 +935,9 @@
             var active_payment_form = form_payment.find('.forms .form-' + active_payment);
             active_payment_form.show();
 
-            form_payment.find('.forms').removeClass('at-' + previous_payment).addClass('at-' + active_payment);
+            if (active_payment) {
+                form_payment.find('.forms').removeClass('at-' + previous_payment).addClass('at-' + active_payment);
+            }
 
             var button_note = $('.form-button .button-note');
             button_note.find('span').hide();
@@ -946,19 +949,6 @@
             }
 
             form_payment.data('payment', active_payment);
-
-            // Custom for payment method transfer, will required user to add email + not recurring
-            if (active_payment === 'qr_scb' || active_payment === 'transfer') {
-
-                $('#id_real_recurring').val('');
-                $('.field-email div.help-block').addClass('hidden');
-                //$('.form-recurring').addClass('invisible');
-                $('.cart-detail-info-body-recurring-header').addClass('hidden');
-
-            } else {
-                //$('.form-recurring').removeClass('invisible');
-                $('.cart-detail-info-body-recurring-header').removeClass('hidden');
-            }
             return false;
         }
 
