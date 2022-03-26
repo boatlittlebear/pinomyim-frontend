@@ -402,8 +402,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="animate-content animate-donor-content donorList-wrapper">
-                                            </div>
+                                            <div class="animate-content animate-donor-content donorList-wrapper" style="display: none;" id="donorListWrapperAnimate"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1337,8 +1336,9 @@
         doAnimation(false);
 
         setTimeout(function () {
+            $('#donorListWrapperAnimate').css('display', '');
             doAnimation(true);
-        }, 1500);
+        }, 5000);
 
         setInterval(function () {
             doAnimation(true);
