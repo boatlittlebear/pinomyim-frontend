@@ -628,12 +628,12 @@
                                                                 <label class="control-label"
                                                                     for="id_authenticated_donor">บริจาคโดย</label>
                                                                 <div class="field-authenticated-donor">
-                                                                    <span class="name">ชื่อ</span>
+                                                                    <span class="name">ชื่อ *</span>
                                                                     <input type="text" name="name" id="id_name"
                                                                         class="form-control" maxlength="100" />
                                                                     <div class="help-block"></div>
-                                                                    <span class="email">อีเมล</span>
-                                                                    <input type="text" name="email" id="id_email"
+                                                                    <span class="email">อีเมล *</span>
+                                                                    <input type="email" name="email" id="id_email"
                                                                         class="form-control" maxlength="100" />
                                                                     <div class="help-block"></div>
                                                                 </div>
@@ -680,7 +680,7 @@
                                                                     <div class="input-address-group">
                                                                         <div class="_mb-10">
                                                                             <div class="text-muted">
-                                                                                <small>ที่อยู่*</small>
+                                                                                <small>ที่อยู่* (โดยละเอียด)</small>
                                                                             </div>
                                                                             <textarea type="text"
                                                                                 name="invoice_location_address"
@@ -843,7 +843,7 @@
                 <div class="section-share">
                     <p>ชวนเพื่อนมาบริจาคผ่าน</p>
                     <ul class="btn-group-share">
-                        <li><a href="https://twitter.com/intent/tweet?text=PINOMYIM BIRTHDAY 2022 https%3A//pinomyimhbdproject.netlify.app"
+                        <li><a href="https://twitter.com/intent/tweet?text=PINOMYIM BIRTHDAY 2022 เนื่องในวันเกิด Pinomyim ในวันที่ 6 เมษายนนี้ อยากชวนเพื่อนๆ ร่วมบริจาคเงินเลี้ยงอาหารให้กับน้องๆที่สถานสงเคราะห์เด็กอ่อนพญาไท โดยจะมีของละลึกจาก Pinomyim มอบให้สำหรับผู้ที่บริจาคตั้งแต่ 300 บาทขึ้นไป ❤️ขอบคุณที่ร่วมบริจาคนะคะ❤️ https%3A//pinomyimhbdproject.netlify.app"
                                 class="btn-share-twitter" id="share-twitter"><i class="fa fa-twitter-square"></i>
                                 Twitter</a></li>
                     </ul>
@@ -907,6 +907,7 @@
     <script src="static/scripts/animation.person.stand.js"></script>
 
     <script>
+        
         $('#id_name').attr('required', true);
         $('#id_email').attr('required', true);
         $('#id_phone_number').attr('required', true);
@@ -1349,6 +1350,7 @@
         $(document).ready(function () {
             $('#donation-info-form').css('display', 'block');
         });
+        
 
     </script>
 
