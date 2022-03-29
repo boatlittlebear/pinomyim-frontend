@@ -987,17 +987,14 @@
             var amount = $('#id_real_amount').val();
             $(document).find('.card-info').remove();
             var detail = "";
-            if (amount === $('#id_amount_1').val()) {
-                detail = "รายละเอียด id_amount_1"
+            if (100 <= amount && amount < 200 ) {
+                detail = "ได้รับโปโต้การ์ดแบบสุ่ม 1 ลาย"
             }
-            else if (amount === $('#id_amount_2').val()) {
-                detail = "รายละเอียด id_amount_2"
+            else if (200 <= amount && amount < 300  ) {
+                detail = "ได้รับโปโต้การ์ดแบบสุ่ม 1 ลายจาก 3 ลาย และพวงกุญแจนักสำรวจปิ่นอมยิ้ม"
             }
-            else if (amount === $('#id_amount_3').val()) {
-                detail = "รายละเอียด id_amount_3"
-            }
-            else if (amount > $('#id_amount_custom').val()) {
-                detail = "รายละเอียด id_amount_custom"
+            else if (amount >= 300) {
+                detail = "ได้รับโปโต้การ์ดแบบสุ่ม 1 ลายจาก 3 ลาย, พวงกุญแจนักสำรวจปิ่นอมยิ้ม และของขวัญพิเศษจากปิ่นอมยิ้ม"
             }
             if (Number(amount) > 0 && detail) {
                 $('.form-amount').after(`<p class="card-info alert alert-info">${detail}</p>`);
